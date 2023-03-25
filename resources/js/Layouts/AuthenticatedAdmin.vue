@@ -33,8 +33,8 @@ const showingNavigationDropdown = ref(false);
 	<BreezeNavLink :href="route('news.index')" :active="route().current('news.index')">
 		News
 	</BreezeNavLink>	
-	<BreezeNavLink :href="route('category.index')" :active="route().current('category.index')">
-		Category
+	<BreezeNavLink :href="route('event.index')" :active="route().current('event.index')">
+		Events
 	</BreezeNavLink>
     <BreezeNavLink :href="route('location.index')" :active="route().current('location.index')">
 		E ovo je admin da znaš

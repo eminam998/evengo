@@ -60,6 +60,5 @@ Route::group([
     Route::get('/', 'DashboardController@index')->name('admin');
     Route::resource('company', 'CompanyController');
     Route::resource('news', 'NewsController');
-
-
+    Route::resource('event', 'EventController');
 });

@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
+use App\Models\Event;
 use App\Models\Company;
-use App\Models\News;
-use Carbon\Carbon;
+use App\Models\Category;
+use App\Models\Location;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Inertia\Inertia;
 
-class NewsController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,15 +22,15 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = (new News())->newQuery();
+        $events = (new Event())->newQuery();
         $user_id = Auth::id();
         $company_id = Company::where('user_id', $user_id)->first()->id;
-        $news->where('company_id', $company_id);
-        $news->latest();
-        $news = $news->paginate(100)->onEachSide(2)->appends(request()->query());
+        $events->where('company_id', $company_id);
+        $events->latest();
+        $events = $events->paginate(100)->onEachSide(2)->appends(request()->query());
 
-        return Inertia::render('Admin/News/Index', [
-            'news' => $news,
+        return Inertia::render('Admin/Event/Index', [
+            'events' => $events,
         ]);
     }
 
@@ -40,7 +41,12 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/News/Create');
+        $locations = Location::all();
+        $categories = Category::all();
+        return Inertia::render('Admin/Event/Create',[
+            'locations' => $locations,
+            'categories' => $categories
+        ]);
         
     }
 
@@ -52,40 +58,37 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-       
         Validator::make($request->all(), [
-            'title' => ['required'],
+            'name' => ['required'],
             'description' => ['required'],
             'image' => ['required'],
+            'address' => ['required'],
+            'category_id' => ['required'],
+            'location_id' => ['required'],
+            'date' => ['required'],
+            'time' => ['required'],            
         ])->validate();
   
         $fileName = time().'.'.$request->file('image')->extension();  
         $request->file('image')->move(public_path('uploads'), $fileName);
         $imagesname = '';
 
-        if($request->file('images')){
-            $files = $request->file('images');            
-            foreach($files as $image){
-                
-                $imgName = time().'.'.$image->extension();
-                $image->move(public_path('uploads'), $imgName);
-                $imagesname = $imgName.','.$imgName;
-            }
-        }
-
-
         $user_id = Auth::id();
         $company_id = Company::where('user_id', $user_id)->first()->id;
     
-        News::create([
-            'title' => $request->title,
+        Event::create([
+            'name' => $request->name,
             'description' => $request->description,
             'company_id' => $company_id,
             'image' => $fileName,
-            'images' => $imagesname
+            'address' => $request->address,
+            'location_id' => $request->location_id,
+            'category_id' => $request->category_id,
+            'date' => $request->date,
+            'time' => $request->time,
         ]);
     
-        return redirect()->route('news.index');
+        return redirect()->route('event.index');
     }
 
     /**
@@ -105,10 +108,14 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit(Event $event)
     {
-        return Inertia::render('Admin/News/Edit', [
-            'news' => $news
+        $locations = Location::all();
+        $categories = Category::all();
+        return Inertia::render('Admin/Event/Edit', [
+            'event' => $event,
+            'locations' => $locations,
+            'categories' => $categories
         ]);
     }
 
@@ -121,14 +128,20 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $news = News::find($id);
-
-        $validated_data = $request->validate([
-            'title' => ['required'],
+        Validator::make($request->all(), [
+            'name' => ['required'],
             'description' => ['required'],
             'image' => ['required'],
-        ]);
+            'address' => ['required'],
+            'category_id' => ['required'],
+            'location_id' => ['required'],
+            'date' => ['required'],
+            'time' => ['required'],            
+        ])->validate();
 
+        $event = Event::find($id);
+
+  
         if ($request->file('image')) {
             $validated_data['image'] = $request->validate([
                 'image' => ['required', 'image', 'max:1500'],
@@ -137,7 +150,7 @@ class NewsController extends Controller
 
             // Grab the old image and delete it
             // dd($validated_data, $photo->path);
-            $oldImage = $news->image;
+            $oldImage = $event->image;
             Storage::delete($oldImage);
 
             $fileName = time().'.'.$request->file('image')->extension();  
@@ -145,16 +158,18 @@ class NewsController extends Controller
             $validated_data['image'] = $fileName;
         }
 
-        //dd($validated_data);
-        
-        $news->title= $validated_data['title'];
-        $news->description= $validated_data['description'];
-        $news->image= $validated_data['image'];
-        $news->save();
+            $event->name =  $request->name;
+            $event->description =  $request->description;
+            $event->image =  $fileName;
+            $event->address =  $request->address;
+            $event->location_id =  $request->location_id;
+            $event->category_id = $request->category_id;
+            $event->date =  $request->date;
+            $event->time =  $request->time;
 
-
-
-        return redirect()->route('news.index');
+            $event->save();
+    
+        return redirect()->route('event.index');
     }
 
     /**
@@ -165,7 +180,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        News::find($id)->delete();
-        return redirect()->route('news.index');
+        Event::find($id)->delete();
+        return redirect()->route('event.index');
     }
 }
