@@ -28,7 +28,7 @@ function destroy(id) {
 
     <BreezeAuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-blue-800 leading-tight">
                 Location
             </h2>
         </template>
@@ -36,7 +36,7 @@ function destroy(id) {
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="flex bg-white border-b border-gray-200 justify-between items=center p-5">
+                    <div class="flex bg-white border-b border-blue-200 justify-between items=center p-5">
                         <div class="flex space-x-2 items-center">
                             Location Settings Page! Here you can list, create, update or delete category!
                         </div>

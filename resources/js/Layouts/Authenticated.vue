@@ -28,16 +28,16 @@ const showingNavigationDropdown = ref(false);
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 	<BreezeNavLink :href="route('superadmin')" :active="route().current('superadmin')">
-		Dashboard
+		Početna
 	</BreezeNavLink>
 	<BreezeNavLink :href="route('user.index')" :active="route().current('user.index')">
-		Users
+		Korisnici
 	</BreezeNavLink>	
 	<BreezeNavLink :href="route('category.index')" :active="route().current('category.index')">
-		Category
+		Kategorije
 	</BreezeNavLink>
     <BreezeNavLink :href="route('location.index')" :active="route().current('location.index')">
-		Location
+		Lokacije
 	</BreezeNavLink>
 </div>
                         </div>

@@ -28,7 +28,7 @@ class CategoryController extends Controller
     {
         $categories = (new Category)->newQuery();
         $categories->latest();
-        $categories = $categories->paginate(100)->onEachSide(2)->appends(request()->query());
+        $categories = $categories->paginate(5)->onEachSide(2)->appends(request()->query());
 
         return Inertia::render('Superadmin/Category/Index', [
             'categories' => $categories,

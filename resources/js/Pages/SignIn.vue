@@ -42,7 +42,7 @@ const submit = () => {
 
 <template>
     <BreezeGuestLayout>
-        <Head title="Register your company" />
+        <Head title="Registrirajte Vašu kompaniju" />
 
         <form @submit.prevent="submit">
             <div class="flex space-x-8">

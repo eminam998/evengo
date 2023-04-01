@@ -1,5 +1,6 @@
 <script setup>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
+import Pagination from '@/Components/Pagination.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
@@ -28,33 +29,33 @@ function destroy(id) {
 
     <BreezeAuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Category
+            <h2 class="font-semibold text-xl text-blue-900 leading-tight">
+                Kategorije
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="flex bg-white border-b border-gray-200 justify-between items=center p-5">
+                <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
+                    <div class="flex bg-white border-b border-blue-200 justify-between items=center p-5">
                         <div class="flex space-x-2 items-center">
                             Category Settings Page! Here you can list, create, update or delete category!
                         </div>
                         <div class="flex space-x-2 items-center" v-if="can.create">
                             <a
-                                className="px-6 py-2 text-white bg-green-500 rounded-md focus:outline-none"
+                                className="px-6 py-2 text-white bg-green-500 uppercase rounded-md focus:outline-none"
                                 :href="route('category.create')"
                             >
-                                Create Category
+                                Kreiraj kategoriju
                         </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-2">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-blue-900 uppercase bg-blue-200">
                             <tr>
                                 <th scope="col" class="py-3 px-6">Title</th>
                                 <th scope="col" class="py-3 px-6">Description</th>
@@ -62,7 +63,7 @@ function destroy(id) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="category in categories.data" :key="category.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr v-for="category in categories.data" :key="category.id" class="bg-white border-b border-blue-200">
                                 <td data-label="Title" class="py-4 px-6">
                                     {{ category.title }}
                                 </td>
@@ -71,29 +72,30 @@ function destroy(id) {
                                 </td>
                                 <td
                                     v-if="can.edit || can.delete"
-                                    class="py-4 px-6 w-48"
+                                    class="py-4 px-6 w-64"
                                 >
                                     <div type="justify-start lg:justify-end" no-wrap>
                                         <a
                                             tabIndex="1"
-                                            className="px-4 py-2 text-sm text-white bg-blue-500 rounded"
+                                            className="px-4 py-2 text-sm text-white bg-blue-600 uppercase rounded"
                                             :href="route('category.edit', category.id)"
                                         >
-                                            Edit
+                                            uredi
                                         </a>
                                         <button
                                             @click="destroy(category.id)"
                                             tabIndex="-1"
                                             type="button"
-                                            className="mx-1 px-4 py-2 text-sm text-white bg-red-500 rounded"
+                                            className="mx-1 px-4 py-2 text-sm uppercase text-white bg-red-600 rounded"
                                         >
-                                            Delete
+                                            obriši
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <Pagination class="mt-6" :links="categories.links" />
                 </div>
             </div>
         </div>
