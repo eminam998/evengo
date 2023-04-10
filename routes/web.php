@@ -49,6 +49,8 @@ Route::group([
     Route::resource('location', 'LocationController');
     Route::get('approve-user/{id}', 'UserController@approve')->name('user.approve');
     Route::get('deny-user/{id}', 'UserController@deny')->name('user.deny');
+    Route::get('view-company/{id}', 'UserController@viewCompany')->name('user.viewCompany');
+
 
 });
 

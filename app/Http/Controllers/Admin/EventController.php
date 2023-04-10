@@ -27,7 +27,7 @@ class EventController extends Controller
         $company_id = Company::where('user_id', $user_id)->first()->id;
         $events->where('company_id', $company_id);
         $events->latest();
-        $events = $events->paginate(100)->onEachSide(2)->appends(request()->query());
+        $events = $events->paginate(10)->onEachSide(2)->appends(request()->query());
 
         return Inertia::render('Admin/Event/Index', [
             'events' => $events,
@@ -99,7 +99,9 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('Admin/Event/Show', [
+            'event' => Event::with((['location', 'category']))->where('id',$id)->first()
+        ]);
     }
 
     /**

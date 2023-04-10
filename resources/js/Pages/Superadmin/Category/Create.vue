@@ -13,11 +13,11 @@ const submit = () => {
 };
 </script>
 <template>
-    <Head title="Dashboard" />
+    <Head title="Kreiraj kategoriju" />
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Create Category
+                Kreiraj kategoriju
             </h2>
         </template>
         <div class="py-12">
@@ -29,13 +29,13 @@ const submit = () => {
                                 className="px-6 py-2 text-white bg-blue-500 rounded-md focus:outline-none"
                                 :href="route('category.index')"
                             >
-                                Back
+                                Nazad
                             </Link>
                         </div>
                         <form name="createForm" @submit.prevent="submit">
                                 <div className="flex flex-col">
                                     <div className="mb-4">
-                                        <BreezeLabel for="title" value="Title" />
+                                        <BreezeLabel for="title" value="Naziv" />
                                         
                                         <BreezeInput 
                                             id="title" 
@@ -48,7 +48,7 @@ const submit = () => {
                                         </span>
                                     </div>
                                     <div className="mb-4">
-                                        <BreezeLabel for="description" value="Description" />
+                                        <BreezeLabel for="description" value="Opis" />
                                         
                                         <BreezeTextArea 
                                             id="description" 
@@ -66,7 +66,7 @@ const submit = () => {
                                         type="submit"
                                         className="px-6 py-2 font-bold text-white bg-green-500 rounded"
                                     >
-                                        Save
+                                        Spremi
                                     </button>
                                 </div>
                             </form>

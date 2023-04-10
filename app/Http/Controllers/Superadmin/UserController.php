@@ -33,11 +33,11 @@ class UserController extends Controller
     {
         $users = (new User)->newQuery();
         $users->latest();
-        $users = $users->paginate(100)->onEachSide(2)->appends(request()->query());
+        $users = $users->paginate(10)->onEachSide(2)->appends(request()->query());
         $pendingUsers = (new PendingUser)->newQuery();
         $pendingUsers->latest();
         $pendingUsers->where('approved','pending');
-        $pendingUsers = $pendingUsers->paginate(100)->onEachSide(2)->appends(request()->query());
+        $pendingUsers = $pendingUsers->paginate(10)->onEachSide(2)->appends(request()->query());
 
         return Inertia::render('Superadmin/User/Index', [
             'users' => $users,
@@ -97,6 +97,16 @@ class UserController extends Controller
         return redirect()->route('user.index');
 
 
+    }
 
+    public function viewCompany($id){
+        $company = Company::with((['location', 'category']))->where('user_id', $id)->first();
+
+        if(empty($company)){
+            $company = PendingCompany::with((['location', 'category']))->where('user_id', $id)->first();
+        }
+        return Inertia::render('Superadmin/User/Company', [
+            'company' => $company,
+        ]);
     }
 }

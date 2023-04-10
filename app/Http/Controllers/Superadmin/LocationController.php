@@ -20,7 +20,7 @@ class LocationController extends Controller
     {
         $locations = (new Location)->newQuery();
         $locations->latest();
-        $locations = $locations->paginate(100)->onEachSide(2)->appends(request()->query());
+        $locations = $locations->paginate(5)->onEachSide(2)->appends(request()->query());
 
         return Inertia::render('Superadmin/Location/Index', [
             'locations' => $locations,

@@ -15,7 +15,7 @@ const props = defineProps({
 });
 const form = useForm();
 function destroy(id) {
-    if (confirm("Are you sure you want to Delete")) {
+    if (confirm("Jeste li sigurni da želite oprisati kategoriju?")) {
         form.delete(route('category.destroy', id));
     }
 }
@@ -25,7 +25,7 @@ function destroy(id) {
 
 
 <template>
-    <Head title="Category" />
+    <Head title="Kategorije" />
 
     <BreezeAuthenticatedLayout>
         <template #header>
@@ -39,7 +39,7 @@ function destroy(id) {
                 <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
                     <div class="flex bg-white border-b border-blue-200 justify-between items=center p-5">
                         <div class="flex space-x-2 items-center">
-                            Category Settings Page! Here you can list, create, update or delete category!
+                            Sve kategorije
                         </div>
                         <div class="flex space-x-2 items-center" v-if="can.create">
                             <a
@@ -57,9 +57,9 @@ function destroy(id) {
                     <table class="w-full text-sm text-left text-gray-500">
                         <thead class="text-xs text-blue-900 uppercase bg-blue-200">
                             <tr>
-                                <th scope="col" class="py-3 px-6">Title</th>
-                                <th scope="col" class="py-3 px-6">Description</th>
-                                <th v-if="can.edit || can.delete" scope="col" class="py-3 px-6">Actions</th>
+                                <th scope="col" class="py-3 px-6">Naziv</th>
+                                <th scope="col" class="py-3 px-6">Opis</th>
+                                <th v-if="can.edit || can.delete" scope="col" class="py-3 px-6">Opcije</th>
                             </tr>
                         </thead>
                         <tbody>

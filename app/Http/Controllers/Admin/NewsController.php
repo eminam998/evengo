@@ -26,7 +26,7 @@ class NewsController extends Controller
         $company_id = Company::where('user_id', $user_id)->first()->id;
         $news->where('company_id', $company_id);
         $news->latest();
-        $news = $news->paginate(100)->onEachSide(2)->appends(request()->query());
+        $news = $news->paginate(10)->onEachSide(2)->appends(request()->query());
 
         return Inertia::render('Admin/News/Index', [
             'news' => $news,
@@ -66,10 +66,10 @@ class NewsController extends Controller
         if($request->file('images')){
             $files = $request->file('images');            
             foreach($files as $image){
+                $imgName = time().$image->getClientOriginalName().'.'.$image->extension();
+                $image->move(public_path('uploads'),$imgName);
+                $imagesname = $imagesname.','.$imgName;
                 
-                $imgName = time().'.'.$image->extension();
-                $image->move(public_path('uploads'), $imgName);
-                $imagesname = $imgName.','.$imgName;
             }
         }
 
@@ -94,9 +94,13 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(News $news)
     {
-        //
+        //$images = explode( ',', $news->images );
+        return Inertia::render('Admin/News/Show', [
+            'news' => $news,
+            //'images' => $images
+        ]);
     }
 
     /**

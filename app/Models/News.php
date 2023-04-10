@@ -27,9 +27,20 @@ class News extends Model
     }
 
     protected function images(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => url('uploads/'.$value),
-        );
-    }
+{
+    return Attribute::make(
+        get: function ($values) {
+            $values = explode(',', $values);
+            $urls = [];
+            foreach ($values as $value) {
+                if($value){
+                $urls[] = url('uploads/'.$value);
+                }
+            }
+            return $urls;
+        },
+    );
+}
+
+
 }

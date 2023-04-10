@@ -18,11 +18,11 @@ const submit = () => {
 
 </script>
 <template>
-    <Head title="Dashboard" />
+    <Head title="Kreiraj novost" />
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Create News
+                Kreiraj novost
             </h2>
         </template>
         <div class="py-12">
@@ -34,13 +34,13 @@ const submit = () => {
                                 className="px-6 py-2 text-white bg-blue-500 rounded-md focus:outline-none"
                                 :href="route('news.index')"
                             >
-                                Back
+                                Nazad
                             </Link>
                         </div>
                         <form name="createForm" @submit.prevent="submit" enctype="multipart/form-data">
                                 <div className="flex flex-col">
                                     <div className="mb-4">
-                                        <BreezeLabel for="title" value="Title" />
+                                        <BreezeLabel for="title" value="Naslov" />
                                         
                                         <BreezeInput 
                                             id="title" 
@@ -53,12 +53,20 @@ const submit = () => {
                                         </span>
                                     </div>
                                     <div class="mb-4">
-                                        <BreezeLabel for="image" value="Image" />
+                                        <BreezeLabel for="image" value="Glavna slika" />
                                         <input
                                             id="image"
                                             type="file"
                                             name="image"
                                             required
+                                            class="text-sm text-grey-500
+                                                    file:mr-5 file:py-2 file:px-6
+                                                    file:rounded-full file:border-0
+                                                    file:text-sm file:font-medium
+                                                    file:bg-blue-50 file:text-blue-700
+                                                    hover:file:cursor-pointer hover:file:bg-blue-50
+                                                    hover:file:text-blue-700
+                                                " 
                                             
                                             @input = "form.image = $event.target.files[0] || $event.dataTransfer.files"
                                             
@@ -71,19 +79,29 @@ const submit = () => {
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <BreezeLabel for="images" value="Gallery" />
+                                        <BreezeLabel for="images" value="Galerija" />
                                         <input
                                             id="images"
                                             type="file"
                                             name="images"
                                             multiple
+                                            class="text-sm text-grey-500
+                                                    file:mr-5 file:py-2 file:px-6
+                                                    file:rounded-full file:border-0
+                                                    file:text-sm file:font-medium
+                                                    file:bg-blue-50 file:text-blue-700
+                                                    hover:file:cursor-pointer hover:file:bg-blue-50
+                                                    hover:file:text-blue-700
+                                                " 
+                                            
+
                                             
                                             @input = "form.images = $event.target.files"
                                             
                                         />
                                     </div>
                                     <div className="mb-4">
-                                        <BreezeLabel for="description" value="Description" />
+                                        <BreezeLabel for="description" value="Sadržaj" />
                                         
                                         <BreezeTextArea 
                                             id="description" 
@@ -103,7 +121,7 @@ const submit = () => {
                                         type="submit"
                                         className="px-6 py-2 font-bold text-white bg-green-500 rounded"
                                     >
-                                        Save
+                                        Spremi
                                     </button>
                                 </div>
                             </form>
