@@ -68,9 +68,11 @@ class UserController extends Controller
             'address' => $pendingCompany->address,
             'phone' => $pendingCompany->phone,
             'description' => $pendingCompany->description,
-            'category_id' => $pendingCompany->category_id,
             'location_id' => $pendingCompany->location_id,
             'logo' => $pendingCompany->logo,
+            'instagram' => $pendingCompany->instagram,
+            'facebook' => $pendingCompany->facebook,
+            'twitter' => $pendingCompany->twitter,
         ]);
         $pendingUser->approved = 'true';
         $pendingCompany->approved = 'true';
@@ -100,10 +102,10 @@ class UserController extends Controller
     }
 
     public function viewCompany($id){
-        $company = Company::with((['location', 'category']))->where('user_id', $id)->first();
+        $company = Company::with((['location']))->where('user_id', $id)->first();
 
         if(empty($company)){
-            $company = PendingCompany::with((['location', 'category']))->where('user_id', $id)->first();
+            $company = PendingCompany::with((['location']))->where('user_id', $id)->first();
         }
         return Inertia::render('Superadmin/User/Company', [
             'company' => $company,

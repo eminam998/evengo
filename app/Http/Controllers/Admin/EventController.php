@@ -75,6 +75,12 @@ class EventController extends Controller
 
         $user_id = Auth::id();
         $company_id = Company::where('user_id', $user_id)->first()->id;
+        if($request->guest_number){
+            $guest_number = $request->guest_number;
+        }
+        else{
+            $guest_number = 1000;
+        }
     
         Event::create([
             'name' => $request->name,
@@ -86,6 +92,7 @@ class EventController extends Controller
             'category_id' => $request->category_id,
             'date' => $request->date,
             'time' => $request->time,
+            'guest_number' => $guest_number
         ]);
     
         return redirect()->route('event.index');
@@ -159,6 +166,12 @@ class EventController extends Controller
             $request->file('image')->move(public_path('uploads'), $fileName);
             $validated_data['image'] = $fileName;
         }
+        if($request->guest_number){
+            $guest_number = $request->guest_number;
+        }
+        else{
+            $guest_number = 1000;
+        }
 
             $event->name =  $request->name;
             $event->description =  $request->description;
@@ -168,6 +181,7 @@ class EventController extends Controller
             $event->category_id = $request->category_id;
             $event->date =  $request->date;
             $event->time =  $request->time;
+            $event->guest_number = $guest_number;
 
             $event->save();
     

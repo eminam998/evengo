@@ -66,19 +66,11 @@ const props = defineProps({
                                 <img :src="company.logo" width="200">
                             </div>
                             <div class="pb-4">
-                                <h2 class="text-lg font-bold">Kategorija</h2>
-                                <h3>
-                                    {{company.category.title}}
-                                </h3>
-                            </div>
-                            <div class="pb-4">
                                 <h2 class="text-lg font-bold">Lokacija</h2>
                                 <h3>
                                     {{company.location.name}}
                                 </h3>
                             </div>
-                        </div>
-                        <div class="w-1/2">
                             <div class="pb-4">
                                 <h2 class="text-lg font-bold">Adresa</h2>
                                 <h3>
@@ -91,10 +83,32 @@ const props = defineProps({
                                     {{company.phone}}
                                 </h3>
                             </div>
+                        </div>
+                        <div class="w-1/2">
+                            
+                            
                             <div class="pb-4">
                                 <h2 class="text-lg font-bold">Kratki opis</h2>
                                 <h3>
                                     {{company.description}}
+                                </h3>
+                            </div>
+                            <div class="pb-4">
+                                <h2 class="text-lg font-bold">Facebook</h2>
+                                <h3>
+                                    {{company.facebook}}
+                                </h3>
+                            </div>
+                            <div class="pb-4">
+                                <h2 class="text-lg font-bold">Twitter</h2>
+                                <h3>
+                                    {{company.twitter}}
+                                </h3>
+                            </div>
+                            <div class="pb-4">
+                                <h2 class="text-lg font-bold">Instagram</h2>
+                                <h3>
+                                    {{company.instagram}}
                                 </h3>
                             </div>
                         </div>

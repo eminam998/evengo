@@ -21,8 +21,10 @@ const form = useForm({
     description: props.company.description,
     address: props.company.address,
     phone: props.company.phone,
-    category_id: props.company.category_id,
     location_id: props.company.location_id,
+    instagram: props.company.instagram,
+    twitter: props.company.twitter,
+    facebook: props.company.facebook,
     file: props.company.logo
 
 });
@@ -55,7 +57,7 @@ const submit = () => {
                         <form name="createForm" @submit.prevent="submit">
                                 <div className="flex flex-col">
                                     <div className="mb-4">
-                                        <BreezeLabel for="name" value="Name" />
+                                        <BreezeLabel for="name" value="Ime kompanije" />
                                         
                                         <BreezeInput 
                                             id="name" 
@@ -72,12 +74,19 @@ const submit = () => {
                                         </div>
                                     <div className="mb-4">
 
-                                        <BreezeLabel for="file" value="File" />
-
+                                        <BreezeLabel for="file" value="Logo" />
                                         <input
                                             id="file"
                                             type="file"
                                             name="file"
+                                            class="text-sm text-grey-500
+                                                    file:mr-5 file:py-2 file:px-6
+                                                    file:rounded-full file:border-0
+                                                    file:text-sm file:font-medium
+                                                    file:bg-blue-50 file:text-blue-700
+                                                    hover:file:cursor-pointer hover:file:bg-blue-50
+                                                    hover:file:text-blue-700
+                                                " 
                                             
                                             @input = "form.file = $event.target.files[0] || $event.dataTransfer.files"
                                             
@@ -89,7 +98,7 @@ const submit = () => {
                                         
                                     </div>
                                     <div className="mb-4">
-                                        <BreezeLabel for="address" value="Address" />
+                                        <BreezeLabel for="address" value="Adresa" />
                                         
                                         <BreezeInput 
                                             id="address" 
@@ -102,7 +111,7 @@ const submit = () => {
                                         </span>
                                     </div>
                                     <div className="mb-4">
-                                        <BreezeLabel for="phone" value="Phone" />
+                                        <BreezeLabel for="phone" value="Broj telefona" />
                                         
                                         <BreezeInput 
                                             id="phone" 
@@ -115,7 +124,7 @@ const submit = () => {
                                         </span>
                                     </div>
                                     <div className="mb-4">
-                                        <BreezeLabel for="description" value="Description" />
+                                        <BreezeLabel for="description" value="Kratki opis" />
                                         
                                         <BreezeTextArea 
                                             id="description" 
@@ -127,25 +136,52 @@ const submit = () => {
                                         </span>
                                     </div>
                                     <div className="mb-4">
-                                        <BreezeLabel for="category_id" value="Category" />
+                                        <BreezeLabel for="location_id" value="Lokacija" />
                                         
-                                        <select v-model="form.category_id" class="mt-1 block w-full">
-                                        <option>Please Select</option>
-                                        <option :value="category.id" v-for="(category, i) in categories" :key="i">{{category.id}} - {{ category.title }}</option>
-                                        </select>
-                                        <span className="text-red-600" v-if="form.errors.category_id">
-                                            {{ form.errors.category_id }}
-                                        </span>
-                                    </div>
-                                    <div className="mb-4">
-                                        <BreezeLabel for="location_id" value="Location" />
-                                        
-                                        <select v-model="form.location_id" class="mt-1 block w-full">
+                                        <select v-model="form.location_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option>Please Select</option>
                                         <option :value="location.id" v-for="(location, i) in locations" :key="i">{{location.id}} - {{ location.name }}</option>
                                         </select>
                                         <span className="text-red-600" v-if="form.errors.location_id">
                                             {{ form.errors.location_id }}
+                                        </span>
+                                    </div>
+                                    <div className="mb-4">
+                                        <BreezeLabel for="instagram" value="Instagram" />
+                                        
+                                        <BreezeInput 
+                                            id="instagram" 
+                                            type="text" 
+                                            class="mt-1 block w-full" 
+                                            v-model="form.instagram" 
+                                            autofocus />
+                                        <span className="text-red-600" v-if="form.errors.instagram">
+                                            {{ form.errors.instagram }}
+                                        </span>
+                                    </div>
+                                    <div className="mb-4">
+                                        <BreezeLabel for="facebook" value="Facebook" />
+                                        
+                                        <BreezeInput 
+                                            id="facebook" 
+                                            type="text" 
+                                            class="mt-1 block w-full" 
+                                            v-model="form.facebook" 
+                                            autofocus />
+                                        <span className="text-red-600" v-if="form.errors.facebook">
+                                            {{ form.errors.name }}
+                                        </span>
+                                    </div>
+                                    <div className="mb-4">
+                                        <BreezeLabel for="twitter" value="Twitter" />                                        
+                                        <BreezeInput 
+                                            id="twitter" 
+                                            type="text" 
+                                            class="mt-1 block w-full" 
+                                            v-model="form.twitter" 
+                                            autofocus />
+                                        <span className="text-red-600" v-if="form.errors.twitter">
+                                            {{ form.errors.twitter }}
                                         </span>
                                     </div>
                                 </div>
@@ -155,7 +191,7 @@ const submit = () => {
                                         type="submit"
                                         className="px-6 py-2 font-bold text-white bg-green-500 rounded"
                                     >
-                                        Save
+                                        Spremi
                                     </button>
                                 </div>
                             </form>

@@ -49,12 +49,6 @@ const props = defineProps({
                                 <img :src="company.logo" width="200">
                             </div>
                             <div class="pb-4">
-                                <h2 class="text-lg font-bold">Kategorija</h2>
-                                <h3>
-                                    {{company.category.title}}
-                                </h3>
-                            </div>
-                            <div class="pb-4">
                                 <h2 class="text-lg font-bold">Lokacija</h2>
                                 <h3>
                                     {{company.location.name}}

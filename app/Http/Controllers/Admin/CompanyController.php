@@ -89,7 +89,6 @@ class CompanyController extends Controller
             'address' => ['required'],
             'phone' => ['required'],
             'description' => ['required'],
-            'category_id' => ['required'],
             'location_id' => ['required']
         ])->validate();
 
@@ -116,8 +115,11 @@ class CompanyController extends Controller
         $company->logo = $fileName;
         $company->phone = $request['phone'];
         $company->description = $request['description'];
-        $company->category_id = $request['category_id'];
         $company->location_id = $request['location_id'];
+        $company->instagram = $request['instagram'];
+        $company->facebook = $request['facebook'];
+        $company->twitter = $request['twitter'];
+
 
         $company->save();
 

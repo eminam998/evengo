@@ -1,7 +1,7 @@
 @component('mail::message')
-Hello,
+Zdravo,
 
-We regret to inform you that your application has been denied.
+Nažalost moramo Vas obavijestiti da je vaša prijava odbijena.
 
 {{-- Salutation --}}
 Regards,

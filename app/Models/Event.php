@@ -19,7 +19,8 @@ class Event extends Model
         'image',
         'date',
         'time',
-        'address'
+        'address',
+        'guest_number'
     ];
 
     public function location(){

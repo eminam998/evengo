@@ -87,6 +87,13 @@ function destroy(id) {
                                     {{event.description}}
                                 </h3>
                             </div>
+                            <div class="pb-4">
+                                <h2 class="text-lg font-bold">Broj gostiju</h2>
+                                <h3 v-if="event.guest_number===1000">
+                                    Neograničen
+                                </h3>
+                                <h3 v-else>{{ event.guest_number }}</h3>
+                            </div>
                         </div>
                         
                     </div>

@@ -28,7 +28,9 @@ const form = useForm({
     description: '',
     address: '',
     phone: '',
-    category_id: '',
+    instagram: '',
+    twitter: '',
+    facebook: '',
     location_id: '',
     file: null
 });
@@ -45,7 +47,7 @@ const submit = () => {
         <Head title="Registrirajte Vašu kompaniju" />
 
         <form @submit.prevent="submit">
-            <div class="flex space-x-8">
+            <div class="flex space-x-8 mb-4">
                 <div class="w-1/2">
                     <div class="pb-4 space-y-2">
                         <h2>Lični podaci</h2>
@@ -160,17 +162,6 @@ const submit = () => {
                         </span>
                     </div>
                     <div className="mb-4">
-                        <BreezeLabel for="category_id" value="Kategorija" />
-                        
-                        <select v-model="form.category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option>Molimo odaberite</option>
-                        <option :value="category.id" v-for="(category, i) in categories" :key="i">{{category.id}} - {{ category.title }}</option>
-                        </select>
-                        <span className="text-red-600" v-if="form.errors.category_id">
-                            {{ form.errors.category_id }}
-                        </span>
-                    </div>
-                    <div className="mb-4">
                         <BreezeLabel for="location_id" value="Lokacija" />
                         
                         <select v-model="form.location_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -180,6 +171,21 @@ const submit = () => {
                         <span className="text-red-600" v-if="form.errors.location_id">
                             {{ form.errors.location_id }}
                         </span>
+                    </div>
+                    <div class="mt-4">
+                        <BreezeLabel for="instagram" value="Instagram" />
+                        <BreezeInput id="instagram" type="text" class="mt-1 block w-full" v-model="form.instagram" required autocomplete="instagram" />
+                        <BreezeInputError class="mt-2" :message="form.errors.instagram" />
+                    </div>
+                    <div class="mt-4">
+                        <BreezeLabel for="facebook" value="Facebook" />
+                        <BreezeInput id="facebook" type="text" class="mt-1 block w-full" v-model="form.facebook" required autocomplete="facebook" />
+                        <BreezeInputError class="mt-2" :message="form.errors.facebook" />
+                    </div>
+                    <div class="mt-4">
+                        <BreezeLabel for="twitter" value="Twitter" />
+                        <BreezeInput id="twitter" type="text" class="mt-1 block w-full" v-model="form.twitter" required autocomplete="twitter" />
+                        <BreezeInputError class="mt-2" :message="form.errors.twitter" />
                     </div>
                 </div>
 

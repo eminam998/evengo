@@ -18,6 +18,9 @@ class News extends Model
         'images'
     ];
 
+    public function company(){
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 
     protected function image(): Attribute
     {

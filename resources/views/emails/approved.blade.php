@@ -1,7 +1,7 @@
 @component('mail::message')
-Hello,
+Zdravo,
 
-Your application has been approved, please press the button below to log in!
+Vaša prijava je odobrena, pritisnite donji gumb za prijavu!
 
 
 
@@ -10,7 +10,7 @@ Log in
 @endcomponent
 
 {{-- Salutation --}}
-Regards,
+Lijep pozdrav,
 {{ config('app.name') }}
 
 

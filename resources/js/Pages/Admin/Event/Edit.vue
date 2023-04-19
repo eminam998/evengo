@@ -28,6 +28,7 @@ const form = useForm({
     date: props.event.date,
     category_id: props.event.category_id,
     location_id: props.event.location_id,
+    guest_number: props.event.guest_number
 });
 const submit = () => {
     form.post(route('event.update', props.event.id), {
@@ -108,6 +109,22 @@ const submit = () => {
                                             autofocus />
                                         <span className="text-red-600" v-if="form.errors.description">
                                             {{ form.errors.description }}
+                                        </span>
+                                    </div>
+                                    <div className="mb-4">
+                                        <BreezeLabel for="guest_number" value="Broj gostiju (ukoliko je neograničen ostaviti prazno)" />
+                                        
+                                        <BreezeInput 
+                                            id="guest_number" 
+                                            type="number" 
+                                            class="mt-1 block w-full" 
+                                            v-model="form.guest_number" 
+                                            autofocus />
+                                            <span className="text-red-600 text-sm">
+                                            *Napomena: Broj gostiju je stavljen na vrijednost 1000 ukoliko se radi o neograničenom događaju
+                                        </span>
+                                        <span className="text-red-600" v-if="form.errors.guest_number">
+                                            {{ form.errors.guest_number }}
                                         </span>
                                     </div>
 

@@ -23,6 +23,7 @@ const form = useForm({
     date: '',
     category_id: '',
     location_id: '',
+    guest_number: '',
 });
 const submit = () => {
     form.post(route("event.store"), {
@@ -103,6 +104,20 @@ const submit = () => {
                                             autofocus />
                                         <span className="text-red-600" v-if="form.errors.description">
                                             {{ form.errors.description }}
+                                        </span>
+                                    </div>
+
+                                    <div className="mb-4">
+                                        <BreezeLabel for="guest_number" value="Broj gostiju (ukoliko je neograničen ostaviti prazno)" />
+                                        
+                                        <BreezeInput 
+                                            id="guest_number" 
+                                            type="number" 
+                                            class="mt-1 block w-full" 
+                                            v-model="form.guest_number" 
+                                            autofocus />
+                                        <span className="text-red-600" v-if="form.errors.guest_number">
+                                            {{ form.errors.guest_number }}
                                         </span>
                                     </div>
 

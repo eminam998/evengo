@@ -34,7 +34,6 @@ class SignInController extends Controller
             'address' => ['required'],
             'phone' => ['required'],
             'description' => ['required'],
-            'category_id' => ['required'],
             'location_id' => ['required']
         ]);
 
@@ -58,10 +57,12 @@ class SignInController extends Controller
             'address' => $request->address,
             'phone' => $request->phone,
             'description' => $request->description,
-            'category_id' => $request->category_id,
             'location_id' => $request->location_id,
             'logo' => $fileName,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'instagram' => $request->instagram,
+            'twitter' => $request->twitter,
+            'facebook' => $request->facebook,
         ]);
 
         return redirect('/');

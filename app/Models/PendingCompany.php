@@ -18,7 +18,10 @@ class PendingCompany extends Model
         'description',
         'address',
         'phone',
-        'logo'
+        'logo',
+        'instagram',
+        'twitter',
+        'facebook'
     ];
 
     public function location(){

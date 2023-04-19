@@ -15,17 +15,20 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
+Route::get('/', 'App\Http\Controllers\IndexController@index')->name('home');
 
 Route::get('/sign-in', 'App\Http\Controllers\SignInController@index')->name('sign-in');
+Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('contact');
+Route::get('/all-companies', 'App\Http\Controllers\CompanyController@index')->name('all-companies');
+Route::get('/news', 'App\Http\Controllers\NewsController@index')->name('all-news');
+Route::get('/event', 'App\Http\Controllers\EventController@index')->name('all-events');
+Route::get('/view-news/{id}', 'App\Http\Controllers\NewsController@show')->name('view-news');
+Route::get('/about-company/{id}', 'App\Http\Controllers\CompanyController@show')->name('company.about');
+Route::post('/send-message', 'App\Http\Controllers\ContactController@sendMessage')->name('send.message');
 Route::post('/sign-in/send-request', 'App\Http\Controllers\SignInController@signInRequest')->name('send.request');
+Route::get('/about', function () {
+    return Inertia::render('Main/About');
+})->name('about');
 
 
 Route::get('/dashboard', function () {
@@ -39,19 +42,18 @@ Route::group([
     'prefix' => 'superadmin',
     'middleware' => ['auth'],
 ], function () {
-    Route::get('/superadmin', function () {
-        return Inertia::render('Superadmin/Dashboard');
-    })->name('superadmin');
+    Route::get('/', 'DashboardController@index')->name('superadmin');
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
     Route::resource('category', 'CategoryController');
     Route::resource('location', 'LocationController');
+    Route::resource('superadmin-news', 'AllNewsController');
     Route::get('approve-user/{id}', 'UserController@approve')->name('user.approve');
     Route::get('deny-user/{id}', 'UserController@deny')->name('user.deny');
     Route::get('view-company/{id}', 'UserController@viewCompany')->name('user.viewCompany');
-
-
+    Route::resource('messages', 'ContactController');
+    Route::post('send-reply', 'ContactController@sendReply')->name('send.reply');
 });
 
 Route::group([

@@ -32,12 +32,18 @@ const showingNavigationDropdown = ref(false);
 	</BreezeNavLink>
 	<BreezeNavLink :href="route('user.index')" :active="route().current('user.index')">
 		Korisnici
+	</BreezeNavLink>
+    <BreezeNavLink :href="route('messages.index')" :active="route().current('messages.index')">
+		Poruke
 	</BreezeNavLink>	
 	<BreezeNavLink :href="route('category.index')" :active="route().current('category.index')">
 		Kategorije
 	</BreezeNavLink>
     <BreezeNavLink :href="route('location.index')" :active="route().current('location.index')">
 		Lokacije
+	</BreezeNavLink>
+    <BreezeNavLink :href="route('superadmin-news.index')" :active="route().current('location.index')">
+		Sve novosti
 	</BreezeNavLink>
 </div>
                         </div>
