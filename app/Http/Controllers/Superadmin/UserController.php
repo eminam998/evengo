@@ -51,8 +51,10 @@ class UserController extends Controller
     }
 
     public function approve($id){
+        
         $pendingUser = PendingUser::find($id);
         $pendingCompany = PendingCompany::where('user_id', $pendingUser->id)->first();
+        $logo = explode('/',$pendingCompany->logo);
         $user = User::create([
             'name' => $pendingUser->name,
             'email' => $pendingUser->email,
@@ -69,7 +71,7 @@ class UserController extends Controller
             'phone' => $pendingCompany->phone,
             'description' => $pendingCompany->description,
             'location_id' => $pendingCompany->location_id,
-            'logo' => $pendingCompany->logo,
+            'logo' => $logo[4],
             'instagram' => $pendingCompany->instagram,
             'facebook' => $pendingCompany->facebook,
             'twitter' => $pendingCompany->twitter,

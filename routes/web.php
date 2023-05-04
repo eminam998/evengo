@@ -22,6 +22,8 @@ Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('co
 Route::get('/all-companies', 'App\Http\Controllers\CompanyController@index')->name('all-companies');
 Route::get('/news', 'App\Http\Controllers\NewsController@index')->name('all-news');
 Route::get('/event', 'App\Http\Controllers\EventController@index')->name('all-events');
+Route::get('/view-event/{id}', 'App\Http\Controllers\EventController@show')->name('view-event');
+Route::put('/subscribe/{id}', 'App\Http\Controllers\EventController@subscribe')->name('subscribe');
 Route::get('/view-news/{id}', 'App\Http\Controllers\NewsController@show')->name('view-news');
 Route::get('/about-company/{id}', 'App\Http\Controllers\CompanyController@show')->name('company.about');
 Route::post('/send-message', 'App\Http\Controllers\ContactController@sendMessage')->name('send.message');
@@ -29,6 +31,15 @@ Route::post('/sign-in/send-request', 'App\Http\Controllers\SignInController@sign
 Route::get('/about', function () {
     return Inertia::render('Main/About');
 })->name('about');
+Route::get('/accepted', function () {
+    return Inertia::render('Main/Accepted');
+})->name('accepted');
+Route::get('/denied', function () {
+    return Inertia::render('Main/Denied');
+})->name('denied');
+Route::get('/sign-in/success', function () {
+    return Inertia::render('Main/AfterSignIn');
+})->name('sign-in.success');
 
 
 Route::get('/dashboard', function () {

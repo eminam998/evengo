@@ -80,6 +80,7 @@ function format_date(value){
                         :src="image" />
                     </div>
                     </div>
+                    
                 </div>
                 </div>
                 <div class="relative flex flex-col min-w-0 break-words mb-6 p-8 mx-20 mt-16">

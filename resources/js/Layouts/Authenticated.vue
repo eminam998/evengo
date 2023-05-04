@@ -42,7 +42,7 @@ const showingNavigationDropdown = ref(false);
     <BreezeNavLink :href="route('location.index')" :active="route().current('location.index')">
 		Lokacije
 	</BreezeNavLink>
-    <BreezeNavLink :href="route('superadmin-news.index')" :active="route().current('location.index')">
+    <BreezeNavLink :href="route('superadmin-news.index')" :active="route().current('superadmin-news.index')">
 		Sve novosti
 	</BreezeNavLink>
 </div>
@@ -66,7 +66,7 @@ const showingNavigationDropdown = ref(false);
 
                                     <template #content>
                                         <BreezeDropdownLink :href="route('logout')" method="post" as="button">
-                                            Log Out
+                                            Odjava
                                         </BreezeDropdownLink>
                                     </template>
                                 </BreezeDropdown>
@@ -89,7 +89,7 @@ const showingNavigationDropdown = ref(false);
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <BreezeResponsiveNavLink :href="route('superadmin')" :active="route().current('superadmin')">
-                            Dashboard
+                            Početna stranica
                         </BreezeResponsiveNavLink>
                     </div>
 
@@ -102,7 +102,7 @@ const showingNavigationDropdown = ref(false);
 
                         <div class="mt-3 space-y-1">
                             <BreezeResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
+                                Odjava
                             </BreezeResponsiveNavLink>
                         </div>
                     </div>

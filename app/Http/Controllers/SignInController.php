@@ -65,7 +65,7 @@ class SignInController extends Controller
             'facebook' => $request->facebook,
         ]);
 
-        return redirect('/');
+        return redirect()->route('sign-in.success');
     }
     
 }

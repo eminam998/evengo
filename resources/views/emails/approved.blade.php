@@ -17,7 +17,7 @@ Lijep pozdrav,
 {{-- Subcopy --}}
 
 @component('mail::subcopy')
-If you’re having trouble clicking the "Log in" button, copy and paste the URL below
-into your web browser: [{{ $url }}]({{ $url }})
+Ako imate problema s klikom na gumb "Prijava", kopirajte i zalijepite donji URL
+u vaš web preglednik: [{{ $url }}]({{ $url }})
 @endcomponent
 @endcomponent

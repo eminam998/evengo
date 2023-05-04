@@ -62,13 +62,13 @@ function destroy(id) {
                                     {{ n.title }}
                                 </td>
                                 <td data-label="Title" class="py-4 px-6">
-                                    {{ n.description }}
+                                    {{ n.description.substring(0,100)+"..." }}
                                 </td>
                                 <td data-label="Title" class="py-4 px-6">
                                     {{ n.company.name }}
                                 </td>
                                 <td data-label="Title" class="py-4 px-6">
-                                    <img :src="n.image" width="50" />
+                                    <img :src="n.image" width="100" />
                                 </td>
                                 <td
                                    

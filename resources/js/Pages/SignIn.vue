@@ -166,7 +166,7 @@ const submit = () => {
                         
                         <select v-model="form.location_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option>Molimo odaberite</option>
-                        <option :value="location.id" v-for="(location, i) in locations" :key="i">{{location.id}} - {{ location.name }}</option>
+                        <option :value="location.id" v-for="(location, i) in locations" :key="i">{{ location.name }}</option>
                         </select>
                         <span className="text-red-600" v-if="form.errors.location_id">
                             {{ form.errors.location_id }}

@@ -126,7 +126,7 @@ const submit = () => {
                                         
                                         <select v-model="form.category_id"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option>Please Select</option>
-                                        <option :value="category.id" v-for="(category, i) in categories" :key="i">{{category.id}} - {{ category.title }}</option>
+                                        <option :value="category.id" v-for="(category, i) in categories" :key="i">{{ category.title }}</option>
                                         </select>
                                         <span className="text-red-600" v-if="form.errors.category_id">
                                             {{ form.errors.category_id }}
@@ -137,7 +137,7 @@ const submit = () => {
                                         
                                         <select v-model="form.location_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                         <option>Please Select</option>
-                                        <option :value="location.id" v-for="(location, i) in locations" :key="i">{{location.id}} - {{ location.name }}</option>
+                                        <option :value="location.id" v-for="(location, i) in locations" :key="i">{{ location.name }}</option>
                                         </select>
                                         <span className="text-red-600" v-if="form.errors.location_id">
                                             {{ form.errors.location_id }}

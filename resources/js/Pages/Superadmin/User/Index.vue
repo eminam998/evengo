@@ -35,7 +35,7 @@ const props = defineProps({
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex text-gray-700 justify-between items=center p-5">
                         <div class="flex space-x-2 items-center">
-                            Pending users
+                            Korisnici koji čekaju odobrenje
                         </div>
                     </div>
                 </div>
@@ -45,9 +45,9 @@ const props = defineProps({
                     <table class="w-full text-sm text-left text-gray-500">
                         <thead class="text-xs text-gray-700 uppercase bg-blue-200">
                             <tr>
-                                <th scope="col" class="py-3 px-6">Name</th>
-                                <th scope="col" class="py-3 px-6">Email</th>
-                                <th scope="col" class="py-3 px-6">Actions</th>
+                                <th scope="col" class="py-3 px-6">Ime</th>
+                                <th scope="col" class="py-3 px-6">Email adresa</th>
+                                <th scope="col" class="py-3 px-6">Opcije</th>
                             </tr>
                         </thead>
                         <tbody>

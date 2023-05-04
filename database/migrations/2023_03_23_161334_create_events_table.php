@@ -22,7 +22,7 @@ return new class extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('image');
             $table->string('address');
             $table->date('date');

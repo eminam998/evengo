@@ -4,7 +4,7 @@ Zdravo,
 Nažalost moramo Vas obavijestiti da je vaša prijava odbijena.
 
 {{-- Salutation --}}
-Regards,
+Lijep pozdrav,
 {{ config('app.name') }}
 
 
