@@ -8,6 +8,10 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
+  guestCount: {
+    type: Number,
+    default: 0,
+  },
 })
 
 const form = useForm();
@@ -93,6 +97,12 @@ function destroy(id) {
                                     Neograničen
                                 </h3>
                                 <h3 v-else>{{ event.guest_number }}</h3>
+                            </div>
+                            <div class="pb-4">
+                                <h2 class="text-lg font-bold">Broj prijavljenih gostiju</h2>
+                                <h3>
+                                    {{guestCount}}
+                                </h3>
                             </div>
                         </div>
                         

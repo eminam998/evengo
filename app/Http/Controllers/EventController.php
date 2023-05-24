@@ -7,73 +7,48 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\EventRegistration;
 use App\Models\Location;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Request as FacadesRequest;
+use Illuminate\Support\Facades\Request;
+
 use Inertia\Inertia;
 
 class EventController extends Controller
 {
-    public function index(){
-        $byCategory = FacadesRequest::input('byCategory') ?: 'all';
-        $byLocation = FacadesRequest::input('byLocation') ?: '';
+    public function index()
+{
+    $byCategory = Request::input('byCategory', 'all');
+    $byLocation = Request::input('byLocation', '');
 
-        $categories = Category::all();
-        $locations = Location::all();
-        if($byCategory === 'all' && $byLocation === ''){
-            return Inertia::render('Main/Event', [
-                'events' => Event::query()
-                               ->when(FacadesRequest::input('search'), function($query, $search) {
-                                   $query->where('title', 'like', "%{$search}%");
-                               })->with('category')->with('location')->latest()->paginate(10)
-                               ->withQueryString(),
-                'filters' => FacadesRequest::only(['search', 'byCategory']),
-                'categories' => $categories,
-                'locations' => $locations                
-            ]);
-        }
-        elseif($byCategory != 'all' && $byLocation === ''){
-            return Inertia::render('Main/Event', [
-                'events' => Event::query()
-                               ->when(FacadesRequest::input('search'), function($query, $search) {
-                                   $query->where('title', 'like', "%{$search}%");
-                               })->where('category_id', $byCategory)->with('category')->with('location')->latest()->paginate(10)
-                               ->withQueryString(),
-                'filters' => FacadesRequest::only(['search', 'byCategory']),
-                'categories' => $categories,
-                'locations' => $locations                
-            ]);
-        }
-        elseif($byCategory === 'all' && $byLocation != ''){
-            return Inertia::render('Main/Event', [
-                'events' => Event::query()
-                               ->when(FacadesRequest::input('search'), function($query, $search) {
-                                   $query->where('title', 'like', "%{$search}%");
-                               })->where('location_id', $byLocation)->with('category')->with('location')->latest()->paginate(10)
-                               ->withQueryString(),
-                'filters' => FacadesRequest::only(['search', 'byCategory']),
-                'categories' => $categories,
-                'locations' => $locations                
-            ]);
-        }
-        return Inertia::render('Main/Event', [
-            'events' => Event::query()
-                            ->when(FacadesRequest::input('search'), function($query, $search) {
-                                $query->where('title', 'like', "%{$search}%");
-                            })
-                            ->where('category_id', $byCategory)
-                            ->where('location_id', $byLocation)
-                            ->with('location')
-                            ->with('category')
-                            ->latest()
-                            ->paginate(10)
-                            ->withQueryString(),
-            'filters' => FacadesRequest::only(['search', 'byCategory', 'byLocation']),
-            'categories' => $categories ,
-            'locations' => $locations              
-        ]);
-        
-    }
+    $categories = Category::all();
+    $locations = Location::all();
+    
+    $events = Event::query()
+                ->when(Request::input('search'), function($query, $search) {
+                    $query->where('title', 'like', "%{$search}%");
+                })
+                ->when($byCategory !== 'all', function($query) use ($byCategory) {
+                    $query->where('category_id', $byCategory);
+                })
+                ->when(!empty($byLocation), function($query) use ($byLocation) {
+                    $query->where('location_id', $byLocation);
+                })
+                ->with('location')
+                ->with('category')
+                ->where('date', '>=', Carbon::now())
+                ->orderBy('date', 'desc')
+                ->paginate(3)
+                ->withQueryString();
+
+    return Inertia::render('Main/Event', [
+        'events' => $events,
+        'filters' => Request::only(['search', 'byCategory', 'byLocation']),
+        'categories' => $categories,
+        'locations' => $locations
+    ]);
+}
+
 
     public function show($id)
     {
@@ -82,13 +57,17 @@ class EventController extends Controller
         ]);
     }
 
-    public function subscribe(Request $request, $id){
+    public function subscribe(HttpRequest $request, $id){
         $event = Event::find($id);
         $eventcount = EventRegistration::where('event_id', $id)->count();
-        if($eventcount < $event->guest_number){
+        if($eventcount < $event->guest_number || $event->guest_number == 1000){
+            if($event->guest_number != 1000){
+                $event->guest_number = $event->guest_number -1;
+                $event->save();
+            }
             $eventRegistration = new EventRegistration();
             $eventRegistration->event_id = $id;
-            $eventRegistration->email = $request['email'];
+            $eventRegistration->email = $request->email;
             $eventRegistration->save();
             $mailData = [
                 "name" => $event->name,

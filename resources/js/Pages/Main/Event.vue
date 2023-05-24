@@ -157,8 +157,10 @@ function format_date(value){
     </a>
   </div>
 </div>
-<Pagination class="mt-6" :links="events.links" />
+<div class="flex justify-center">
+<Pagination class="mt-6 mx-auto" :links="events.links" />
 
+</div>
 </section>
             </div>
             <!-- Container for demo purpose -->

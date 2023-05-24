@@ -67,7 +67,7 @@ const props = defineProps({
                                             className="mr-4 bg-green-500 px-4 py-2 rounded text-white cursor-pointer"
                                             :href="route('user.viewCompany', pending.id)"
                                         >
-                                            Pregledaj kompaniju
+                                            Pregledaj organizaciju
                                         </a>
                                         <a
                                             tabIndex="1"
@@ -123,7 +123,7 @@ const props = defineProps({
                                             className="ml-4 bg-green-500 px-4 py-2 rounded text-white cursor-pointer"
                                             :href="route('user.viewCompany', user.id)"
                                         >
-                                            Pregledaj kompaniju
+                                            Pregledaj organizaciju
                                         </a>
                                     </div>
                                 </td>

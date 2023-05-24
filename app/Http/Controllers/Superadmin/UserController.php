@@ -74,7 +74,7 @@ class UserController extends Controller
             'logo' => $logo[4],
             'instagram' => $pendingCompany->instagram,
             'facebook' => $pendingCompany->facebook,
-            'twitter' => $pendingCompany->twitter,
+            'website' => $pendingCompany->website,
         ]);
         $pendingUser->approved = 'true';
         $pendingCompany->approved = 'true';

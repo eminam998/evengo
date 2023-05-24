@@ -69,7 +69,6 @@ function format_date(value){
                 </p>
                 </div>
             </div>
-            <h2 class="text-2xl font-bold mb-12 text-center">Galerija</h2>
             <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
                 <div class="-m-1 flex flex-wrap md:-m-2">
                     <div v-for="image in news.images" :key="image" class="flex w-1/3 flex-wrap">
@@ -84,7 +83,7 @@ function format_date(value){
                 </div>
                 </div>
                 <div class="relative flex flex-col min-w-0 break-words mb-6 p-8 mx-20 mt-16">
-                <h2 class="text-xl font-bold mb-2">Ostale vijesti od kompanije - {{ news.company.name }}</h2>
+                <h2 class="text-xl font-bold mb-2">Ostale novosti od organizacije - {{ news.company.name }}</h2>
                 <hr class="bg-grey-400 mb-10">
                 <div class="flex space-x-8">
                     <div v-for="n in allNews" :key="n.id"

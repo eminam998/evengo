@@ -28,12 +28,12 @@ watch(search, (value) => {
 </script>
 
 <template>
-    <Head title="Sve kompanije" />
+    <Head title="Sve organizacije" />
 
     <MainLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Sve kompanije
+                Sve organizacije
             </h2>
         </template>
 
@@ -43,7 +43,7 @@ watch(search, (value) => {
                 <!-- Section: Design Block -->
                 <section class="mb-32 text-gray-800 text-center">
 
-                <h2 class="text-3xl font-bold mb-10 text-center">Kompanije</h2>
+                <h2 class="text-3xl font-bold mb-10 text-center">Organizacije</h2>
                 <div class='max-w-md mx-auto mb-8'>
                     <div class="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
                         <div class="grid place-items-center h-full w-12 text-gray-300">
@@ -57,7 +57,7 @@ watch(search, (value) => {
                         type="text"
                         id="search"
                         v-model="search"
-                        placeholder="Pretraži kompaniju.." /> 
+                        placeholder="Pretraži organizaciju.." /> 
                     </div>
                 </div>
 

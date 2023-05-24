@@ -23,7 +23,7 @@ const form = useForm({
     phone: props.company.phone,
     location_id: props.company.location_id,
     instagram: props.company.instagram,
-    twitter: props.company.twitter,
+    website: props.company.website,
     facebook: props.company.facebook,
     file: props.company.logo
 
@@ -57,7 +57,7 @@ const submit = () => {
                         <form name="createForm" @submit.prevent="submit">
                                 <div className="flex flex-col">
                                     <div className="mb-4">
-                                        <BreezeLabel for="name" value="Ime kompanije" />
+                                        <BreezeLabel for="name" value="Ime organizacije" />
                                         
                                         <BreezeInput 
                                             id="name" 
@@ -173,15 +173,15 @@ const submit = () => {
                                         </span>
                                     </div>
                                     <div className="mb-4">
-                                        <BreezeLabel for="twitter" value="Twitter" />                                        
+                                        <BreezeLabel for="website" value="Web stranica" />                                        
                                         <BreezeInput 
-                                            id="twitter" 
+                                            id="website" 
                                             type="text" 
                                             class="mt-1 block w-full" 
-                                            v-model="form.twitter" 
+                                            v-model="form.website" 
                                             autofocus />
-                                        <span className="text-red-600" v-if="form.errors.twitter">
-                                            {{ form.errors.twitter }}
+                                        <span className="text-red-600" v-if="form.errors.website">
+                                            {{ form.errors.website }}
                                         </span>
                                     </div>
                                 </div>

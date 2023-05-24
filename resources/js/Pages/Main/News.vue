@@ -54,12 +54,12 @@ function format_date(value){
 
 
 <template>
-    <Head title="Sve vijesti" />
+    <Head title="Sve novosti" />
 
     <MainLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Vijesti
+                Novosti
             </h2>
         </template>
 
@@ -70,7 +70,7 @@ function format_date(value){
             <!-- Section: Design Block -->
             <section class="mb-32 text-gray-800 text-center md:text-left">
 
-            <h2 class="text-3xl font-bold mb-12 text-center">Vijesti</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center">Novosti</h2>
             <div class='max-w-md mx-auto mb-8'>
                 <div class="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
                     <div class="grid ml-2 place-items-center h-full w-12 text-gray-300">
@@ -84,14 +84,14 @@ function format_date(value){
                     type="text"
                     id="search"
                     v-model="search"
-                    placeholder="Pretraži vijesti.." /> 
+                    placeholder="Pretraži novosti.." /> 
                     <select
                     v-model="byCompany"
                     @change="getTags"
                     class="
                         px-4
                         py-3
-                        w-96
+                        w-3/4
                         rounded-lg
                         bg-white
                         border-transparent
@@ -99,7 +99,7 @@ function format_date(value){
                         text-sm
                     "
                     >
-                    <option value="all">Sve kompanije</option>
+                    <option value="all">Sve organizacije</option>
                     <option v-for="company in companies" :key="company.id" :value="company.id">{{company.name}}</option>
                     </select>
                 </div>
@@ -130,8 +130,10 @@ function format_date(value){
                 </p>
                 </div>
             </div>
-            <Pagination class="mt-6" :links="news.links" />
+            <div class="mx-auto w-full flex justify-center">
+            <Pagination class="mt-6 mx-auto" :links="news.links" />
 
+            </div>
             </section>
             <!-- Section: Design Block -->
 

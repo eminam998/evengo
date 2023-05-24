@@ -61,7 +61,7 @@ class SignInController extends Controller
             'logo' => $fileName,
             'user_id' => $user->id,
             'instagram' => $request->instagram,
-            'twitter' => $request->twitter,
+            'website' => $request->website,
             'facebook' => $request->facebook,
         ]);
 

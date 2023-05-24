@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('companies', function (Blueprint $table) {
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
-            $table->string('twitter')->nullable();
+            $table->string('website')->nullable();
         });
     }
 
@@ -30,7 +30,7 @@ return new class extends Migration
         Schema::table('companies', function (Blueprint $table) {
             $table->dropColumn('instagram');
             $table->dropColumn('facebook');
-            $table->dropColumn('twitter');
+            $table->dropColumn('website');
         });
     }
 };

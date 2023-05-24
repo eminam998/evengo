@@ -46,10 +46,10 @@ const showingNavigationDropdown = ref(false);
                             <!-- Settings Dropdown -->
                             <div class="ml-3 space-x-8 sm:-my-px sm:ml-10 sm:flex h-16">
                                 <BreezeNavLink :href="route('all-companies')" :active="route().current('all-companies')">
-                                    Kompanije
+                                    Organizacije
                                 </BreezeNavLink>
                                 <BreezeNavLink :href="route('all-news')" :active="route().current('all-news')">
-                                    Vijesti
+                                    Novosti
                                 </BreezeNavLink>	
                                 <BreezeNavLink :href="route('all-events')" :active="route().current('all-events')">
                                     Događaji
@@ -134,7 +134,7 @@ const showingNavigationDropdown = ref(false);
                                 <a :href="route('all-events')" class="mr-4 hover:underline md:mr-6">Događaji</a>
                             </li>
                             <li>
-                                <a :href="route('all-news')" class="mr-4 hover:underline md:mr-6 ">Vijesti</a>
+                                <a :href="route('all-news')" class="mr-4 hover:underline md:mr-6 ">Novosti</a>
                             </li>
                             <li>
                                 <a :href="route('contact')" class="hover:underline">Kontakt</a>

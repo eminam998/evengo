@@ -31,7 +31,7 @@ const showingNavigationDropdown = ref(false);
 		Početna
 	</BreezeNavLink>
 	<BreezeNavLink :href="route('news.index')" :active="route().current('news.index')">
-		Vijesti
+		Novosti
 	</BreezeNavLink>	
 	<BreezeNavLink :href="route('event.index')" :active="route().current('event.index')">
 		Događaji

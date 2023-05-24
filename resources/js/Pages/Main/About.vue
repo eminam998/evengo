@@ -36,8 +36,8 @@ import { Head } from '@inertiajs/inertia-vue3';
     <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 lg:pl-6">
       <h3 class="text-2xl font-bold mb-4">Ko smo mi?</h3>
       <p class="text-gray-500 mb-6">
-        eveNGO™ je platforma koja omogućuje nevladinim registracijama objavljivanje sadržaja na jednom mjestu. Nevladine organizacije
-        putem ove platforme mogu objavljivati vijesti i događaje vezane za njihovo poslovanje.
+        eveNGO™ je platforma koja omogućuje nevladinim organizacijama objavljivanje sadržaja na jednom mjestu. Nevladine organizacije
+        putem ove platforme mogu objavljivati novosti i događaje vezane za njihovo poslovanje.
       </p>
       <p class="text-gray-500">
         eveNGO™ kao platforma je nastala 2023. godine kao diplomski projekat jedne studentice, te je iz toga izrasla 

@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Location;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\EventRegistration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -106,8 +107,10 @@ class EventController extends Controller
      */
     public function show($id)
     {
+        
         return Inertia::render('Admin/Event/Show', [
-            'event' => Event::with((['location', 'category']))->where('id',$id)->first()
+            'event' => Event::with((['location', 'category']))->where('id',$id)->first(),
+            'guestCount' => EventRegistration::where('event_id', $id)->count()
         ]);
     }
 

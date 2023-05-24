@@ -29,7 +29,7 @@ const form = useForm({
     address: '',
     phone: '',
     instagram: '',
-    twitter: '',
+    website: '',
     facebook: '',
     location_id: '',
     file: null
@@ -44,7 +44,7 @@ const submit = () => {
 
 <template>
     <BreezeGuestLayout>
-        <Head title="Registrirajte Vašu kompaniju" />
+        <Head title="Registrirajte Vašu organizaciju" />
 
         <form @submit.prevent="submit">
             <div class="flex space-x-8 mb-4">
@@ -80,11 +80,11 @@ const submit = () => {
                 </div>
                 <div class="w-1/2">
                     <div class="pb-4 space-y-2">
-                        <h2>Podaci o kompaniji</h2>
+                        <h2>Podaci o organizaciji</h2>
                         <hr>
                     </div>
                     <div className="mb-4">
-                        <BreezeLabel for="company_name" value="Naziv kompanije" />
+                        <BreezeLabel for="company_name" value="Naziv organizacije" />
                         
                         <BreezeInput 
                             id="company_name" 
@@ -150,7 +150,7 @@ const submit = () => {
                         </span>
                     </div>
                     <div className="mb-4">
-                        <BreezeLabel for="description" value="Kratki opis kompanije" />
+                        <BreezeLabel for="description" value="Kratki opis organizacije" />
                         
                         <BreezeTextArea 
                             id="description" 
@@ -183,9 +183,9 @@ const submit = () => {
                         <BreezeInputError class="mt-2" :message="form.errors.facebook" />
                     </div>
                     <div class="mt-4">
-                        <BreezeLabel for="twitter" value="Twitter" />
-                        <BreezeInput id="twitter" type="text" class="mt-1 block w-full" v-model="form.twitter" required autocomplete="twitter" />
-                        <BreezeInputError class="mt-2" :message="form.errors.twitter" />
+                        <BreezeLabel for="website" value="website" />
+                        <BreezeInput id="website" type="text" class="mt-1 block w-full" v-model="form.website" required autocomplete="website" />
+                        <BreezeInputError class="mt-2" :message="form.errors.website" />
                     </div>
                 </div>
 

@@ -20,7 +20,7 @@ class Company extends Model
         'phone',
         'logo',
         'instagram',
-        'twitter',
+        'website',
         'facebook'
     ];
 

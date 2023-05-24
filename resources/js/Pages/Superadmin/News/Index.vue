@@ -51,7 +51,7 @@ function destroy(id) {
                             <tr>
                                 <th scope="col" class="py-3 px-6">Naslov</th>
                                 <th scope="col" class="py-3 px-6">Sadržaj</th>
-                                <th scope="col" class="py-3 px-6">Kompanija</th>
+                                <th scope="col" class="py-3 px-6">Organizacija</th>
                                 <th scope="col" class="py-3 px-6">Slika</th>
                                 <th scope="col" class="py-3 px-6">Opcije</th>
                             </tr>

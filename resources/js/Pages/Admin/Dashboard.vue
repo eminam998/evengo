@@ -56,7 +56,7 @@ const props = defineProps({
                     <div class="p-5 flex space-x-8 w-full">
                         <div class="w-1/2">
                             <div class="pb-4">
-                                <h2 class="text-lg font-bold">Ime kompanije</h2>
+                                <h2 class="text-lg font-bold">Ime organizacije</h2>
                                 <h3>
                                     {{company.name}}
                                 </h3>
@@ -100,9 +100,9 @@ const props = defineProps({
                                 </h3>
                             </div>
                             <div class="pb-4">
-                                <h2 class="text-lg font-bold">Twitter</h2>
+                                <h2 class="text-lg font-bold">Web stranica</h2>
                                 <h3>
-                                    {{company.twitter}}
+                                    {{company.website}}
                                 </h3>
                             </div>
                             <div class="pb-4">
@@ -140,7 +140,7 @@ const props = defineProps({
                             <div>
                                 <h2 class="text-lg font-bold">{{n.title}}</h2>
                                 <h3>
-                                    {{n.description}}
+                                    {{ n.description.substring(0,100)+"..." }}
                                 </h3>
                             </div>
                         </div>
@@ -166,7 +166,7 @@ const props = defineProps({
                             <div>
                                 <h2 class="text-lg font-bold">{{n.name}}</h2>
                                 <h3>
-                                    {{n.description}}
+                                    {{ n.description.substring(0,100)+"..." }}
                                 </h3>
                             </div>
                         </div>

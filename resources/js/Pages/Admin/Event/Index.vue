@@ -20,6 +20,14 @@ function destroy(id) {
     }
 }
 
+function isDateGreaterThanToday(date) {
+      const today = new Date();
+      const myDate = new Date(date);
+      today.setHours(0, 0, 0, 0); // Set the time to midnight for accurate comparison
+
+      return myDate.getTime() > today.getTime();
+    }
+
 
 </script>
 
@@ -60,6 +68,7 @@ function destroy(id) {
                                 <th scope="col" class="py-3 px-6">Naziv</th>
                                 <th scope="col" class="py-3 px-6">Opis</th>
                                 <th scope="col" class="py-3 px-6">Slika</th>
+                                <th scope="col" class="py-3 px-6">Status</th>
                                 <th scope="col" class="py-3 px-6">Opcije</th>
                             </tr>
                         </thead>
@@ -74,6 +83,16 @@ function destroy(id) {
                                 </td>
                                 <td data-label="Image" class="py-4 px-6">
                                     <img :src="n.image" width="50" />
+                                </td>
+                                <td class="text-center">
+                                    <span v-if="isDateGreaterThanToday(n.date)"
+                                        class="inline-block whitespace-nowrap rounded-full bg-green-100 px-[0.65em] pb-2 pt-2 text-center align-baseline text-[0.75em] font-bold leading-none text-green-700">
+                                        U toku 
+                                        </span>  
+                                        <span v-else
+                                        class="inline-block whitespace-nowrap rounded-full bg-red-100 px-[0.65em] pb-2 pt-2 text-center align-baseline text-[0.75em] font-bold leading-none text-red-700">
+                                        Istekao
+                                        </span>
                                 </td>
                                 <td
                                    

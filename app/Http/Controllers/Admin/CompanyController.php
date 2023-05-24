@@ -118,7 +118,7 @@ class CompanyController extends Controller
         $company->location_id = $request['location_id'];
         $company->instagram = $request['instagram'];
         $company->facebook = $request['facebook'];
-        $company->twitter = $request['twitter'];
+        $company->website = $request['website'];
 
 
         $company->save();
